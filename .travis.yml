@@ -5,4 +5,3 @@ before_install:
   - docker build -t jbecerra/testdocker -f Dockerfile.dev .
 script:
   - docker run -e CI=true jbecerra/testdocker npm run test 
-  
