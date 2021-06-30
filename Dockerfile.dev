@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR /u01/app
+
+COPY package.json .
+
+RUN npm install
+
+#for CI, not needed on dev
+COPY . .
+
+CMD ["npm", "run", "start"]
