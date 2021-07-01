@@ -5,3 +5,14 @@ before_install:
   - docker build -t jbecerra/testdocker -f Dockerfile.dev .
 script:
   - docker run -e CI=true jbecerra/testdocker npm run test
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "webdocker"
+  env: "Webdocker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-189524978108"
+  bucket_path: "webdocker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
